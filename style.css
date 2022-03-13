@@ -1,0 +1,102 @@
+html {
+    font-family: 'Segoe UI';
+    background-color: dimgray;
+    color: white;
+    font-size: 1em;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 4em 1fr 4em;
+    grid-template-rows: 4em 1fr 4em;
+    grid-template-areas:
+    "top-margin top-margin top-margin",
+    "left-margin page-content right-margin",
+    "bottom-margin bottom-margin bottom-margin";
+}
+
+.page-content {
+    grid-area: page-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3em 1em 1fr 2em;
+    grid-template-areas: 
+    "header" 
+    "navigation" 
+    "game" 
+    "footer";
+}
+
+.header {
+    grid-area: header;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.header img {
+    width: 64px;
+    height: 64px;
+    vertical-align: middle;
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.circle {
+    border-radius: 50%;
+    height: 90%;
+    width: 90%;
+    border: 3px solid blue;
+}
+
+.cross {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    border-radius: 50%;
+    color: red;
+    text-indent: 100%;
+}
+
+.cross:before,
+.cross:after {
+    position: absolute;
+    left: calc(50% - .0625em);
+    width: .125em;
+    height: 100%;
+    border-radius: .125em;
+    transform: rotate(45deg);
+    background: currentcolor;
+    content: ''
+}
+
+.cross:after {
+    transform: rotate(-45deg);
+}
+
+#game {
+    margin: 0 auto;
+    text-align: center;
+    grid-area: game;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.table-border {
+    border: 3px solid;
+    border-collapse: collapse;
+    border-color: black;
+}
+
+a {
+    color: white;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Kółko i krzyżyk",
+    "howToPlay": "Jak grać w kółko i krzyżyk?",
+    "menu": {
+        "newGame": "Nowa gra",
+        "restart": "Graj od nowa",
+        "endGame": "Zakończ grę"
+    },
+    "game" : {
+        "state": "Aktualny stan gry"
+    }
+}
