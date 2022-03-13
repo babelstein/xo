@@ -5,13 +5,13 @@ html {
     font-size: 1em;
 }
 
-.grid{
+body {
     display: grid;
     grid-template-columns: 4em 1fr 4em;
     grid-template-rows: 4em 1fr 4em;
     grid-template-areas:
-    "top-margin top-margin top-margin",
-    "left-margin page-content right-margin",
+    "top-margin top-margin top-margin"
+    "left-margin page-content right-margin"
     "bottom-margin bottom-margin bottom-margin";
 }
 
@@ -43,6 +43,34 @@ html {
     grid-area: navigation;
 }
 
+#game {
+    margin: 0 auto;
+    text-align: center;
+    grid-area: game;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.table-border {
+    border: 3px solid;
+    border-collapse: collapse;
+    border-color: black;
+}
+
+a {
+    color: white;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+}
+
+/* ---------- KÓŁKO I KRZYŻYK ------------ */
+
 .circle {
     border-radius: 50%;
     height: 90%;
@@ -73,30 +101,4 @@ html {
 
 .cross:after {
     transform: rotate(-45deg);
-}
-
-#game {
-    margin: 0 auto;
-    text-align: center;
-    grid-area: game;
-}
-
-.center {
-    margin: 0 auto;
-}
-
-.table-border {
-    border: 3px solid;
-    border-collapse: collapse;
-    border-color: black;
-}
-
-a {
-    color: white;
-}
-
-td {
-    width: 40px;
-    height: 40px;
-    padding: 10px;
 }
