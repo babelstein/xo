@@ -15,11 +15,24 @@ body {
     "bottom-margin bottom-margin bottom-margin";
 }
 
+@media(max-width: 460px){
+    body {
+        background-color: yellow;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 4em 1fr;
+        grid-template-areas:
+        "top-margin"
+        "page-content";
+    }
+}
+    
 .page-content {
     grid-area: page-content;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 3em 1em 1fr 2em;
+    grid-gap: 1em;
     grid-template-areas: 
     "header" 
     "navigation" 
@@ -28,19 +41,21 @@ body {
 }
 
 .header {
+    display: flex;
     grid-area: header;
-    text-align: center;
-    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
 }
 
 .header img {
-    width: 64px;
-    height: 64px;
-    vertical-align: middle;
+    height: 100%;
 }
 
 .navigation {
     grid-area: navigation;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #game {
