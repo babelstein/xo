@@ -1,37 +1,46 @@
-console.log("hello world!");
-var zmienna = 1;
-console.log(zmienna);
-zmienna = 10 + 20;
-console.log(zmienna);
-var obiekt = {};
-console.log(obiekt);
+console.log('hello world!');
 
-document.onload = function(e){
-    console.log("hehehehehe ");
-    var game = document.getElementById('game');
-    game.style.display = "none";
-    var translation = require('./pl.json');
-    console.log(translation);
+var isGameActive = false;
+var gameBoard = [];
+
+function newGame() {
+    isGameActive = true;
+    gameBoard.push([undefined, undefined, undefined]);
+    gameBoard.push([undefined, undefined, undefined]);
+    gameBoard.push([undefined, undefined, undefined]);
+
+    document.getElementById('game'), game;
+    game.style.display = 'block';
+
+    var newGameButton = document.getElementsByClassName('new-game')[0];
+    newGameButton.disabled = true;
+
+    var gameStateInfo = document.getElementById('game-state');
+    gameStateInfo.innerHTML = 'Gra rozpoczęta!';
 }
 
-var newGame = function () {
-    var game = document.getElementById('game');
-    game.style.display = "none";
+function endGame() {
+    isGameActive = false;
 
-    var menus = document.getElementsByClassName('menu');
-    menus[0].style.display = "block";
+    var newGameButton = document.getElementsByClassName('new-game')[0];
+    newGameButton.disabled = false;
 
-    startGame();
+    var gameObj = document.getElementById('game');
+    game.style.display = 'none';
 }
 
-var endGame = function() {
-    var game = document.getElementById('game');
-    game.style.display = "none";
-
-    var menus = document.getElementsByClassName('menu');
-    menus[0].style.display = "block";
+function fieldCheck(row, col) {
+    if (row > 3 || row < 1) {
+        throw "row index must be greater or equal then 0 and lower than 4";
+    } else if (col > 3 || col < 1) {
+        throw "column index must be greater or equal then 0 and lower than 4";
+    } else {
+        var result = game[row - 1][col - 1];
+        return result;
+    }
 }
 
-var startGame = function(){
-
-}
+document.addEventListener("DOMContentLoaded", function (event) {
+    var gameObj = document.getElementById('game');
+    game.style.display = 'none';
+});
