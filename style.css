@@ -82,6 +82,8 @@ td {
     width: 40px;
     height: 40px;
     padding: 10px;
+    border-style: outset;
+    border-width: thin;
 }
 
 /* ---------- KÓŁKO I KRZYŻYK ------------ */

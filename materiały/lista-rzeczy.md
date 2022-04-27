@@ -61,7 +61,7 @@
             - dostęp do właściwości w obiekcie
             - kilka słów o JSON
         - kolejność wykonywania działań `2 + 2 * 2`
-            - "dziwne" przypadki (opcjonalnie)
+        - pętle `for (in/of)` `while` `do while`
         - dodajemy treść do strony `document.write()` oraz `document.writeln()`
 - JS funkcje
     - definiowanie `function myFunc() {}`
@@ -82,8 +82,4 @@
     - kiedy dokument się załaduje?
         `document.addEventListener("DOMContentLoaded", function(event) {});`
     - button `click`
-    - 
-- przypadki użycia w naszej aplikacji
-    - wyłączenie planszy gry na początku działania `document.onload`
-    - włączenie planszy gry na przycisk `onClick`
-    - 
+    - "łapanie" eventów `element.addEventListener`

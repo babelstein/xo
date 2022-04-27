@@ -1,6 +1,7 @@
 console.log('hello world!');
 
 var isGameActive = false;
+var handlersRegistered = false;
 var gameBoard = [];
 
 function newGame() {
@@ -9,7 +10,7 @@ function newGame() {
     gameBoard.push([undefined, undefined, undefined]);
     gameBoard.push([undefined, undefined, undefined]);
 
-    document.getElementById('game'), game;
+    var game = document.getElementById('game');
     game.style.display = 'block';
 
     var newGameButton = document.getElementsByClassName('new-game')[0];
@@ -17,6 +18,21 @@ function newGame() {
 
     var gameStateInfo = document.getElementById('game-state');
     gameStateInfo.innerHTML = 'Gra rozpoczęta!';
+
+    var gameFields = document.getElementsByTagName('td');
+
+    if (!handlersRegistered) {
+        for (var i = 0; i < gameFields.length; i++) {
+            gameFields[i].addEventListener('click', onFieldClicked);
+        }
+        handlersRegistered = true;
+    }
+}
+
+function onFieldClicked(event) {
+    var col = event.srcElement.dataset.col;
+    var row = event.srcElement.dataset.row;
+    console.log(gameBoard[row][col]);
 }
 
 function endGame() {
