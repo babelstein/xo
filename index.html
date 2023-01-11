@@ -21,7 +21,8 @@
             <button onclick="newGame()" class="new-game">Nowa gra</button>
         </nav>
         <div id="game">
-            <p id="game-state">Aktualny stan gry</p>
+            <p>Aktualny stan gry:</p>
+            <span id="game-state"></span>
             <table class="center table-border">
                 <tr>
                     <td data-row="0" data-col="0">
@@ -43,7 +44,7 @@
                     <td data-row="2" data-col="2"></td>
                 </tr>
             </table>
-            <button>Graj od nowa</button>
+            <button onclick="newGame()">Graj od nowa</button>
             <button onclick="endGame()">Zakończ grę</button>
         </div>
         <div class="footer">

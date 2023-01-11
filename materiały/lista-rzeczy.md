@@ -83,3 +83,7 @@
         `document.addEventListener("DOMContentLoaded", function(event) {});`
     - button `click`
     - "łapanie" eventów `element.addEventListener`
+
+
+https://github.com/TomekByczek/kolko_i_krzyzyk/
+https://github.com/Kod2000/kolkoikrzyzyk
