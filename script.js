@@ -1,17 +1,9 @@
-var isGameActive = false;
-var handlersRegistered = false;
-var gameBoard = null;
-var turnsMade = null;
-
-// Marks if it's circles or cross turn
-// cross - false; circle - true
-var xOrO = false;
+var game = null
 
 function newGame() {
-    isGameActive = true;
-    turnsMade = 0;
-    xOrO = false;
-    initializeGameBoard();
+    game.startGame();
+
+    clearGameBoard();
     toggleGameBoard(true);
     setGameStatus('Gra rozpoczęta! Zaczyna krzyżyk');
 
@@ -22,7 +14,7 @@ function newGame() {
 }
 
 function endGame() {
-    isGameActive = false;
+    game.endGame();
 
     toggleNewGameButton(false);
     toggleGameBoard(false);
@@ -30,9 +22,10 @@ function endGame() {
 }
 
 function onFieldClicked(event) {
-    if (isGameActive) {
-        var column = event.srcElement.dataset.col;
-        var row = event.srcElement.dataset.row;
+    var column = event.srcElement.dataset.col;
+    var row = event.srcElement.dataset.row;
+    var moveResult = game.turnDone(row, col);
+
         if (isFieldEmpty(row, column)) {
             if (IsCrossTurn()) {
                 gameBoard[row][column] = false;
@@ -45,38 +38,23 @@ function onFieldClicked(event) {
                 setGameStatus('Kolej krzyżyka');
             }
             changeTurn();
+            var isWinner = checkWinner();
+            if (isWinner !== null) {
+                isWinner ? setGameStatus('Wygrywa kółko!') : setGameStatus('Wygrywa krzyżyk!');
+                isGameActive = false;
+            }
+            if (isEndOfGame()) {
+                setGameStatus('No to mamy remis!')
+                isGameActive = false;
+            }
         } else {
             setGameStatus('Wybierz puste pole!');
         }
-        var isWinner = checkWinner();
-        if (isWinner !== null) {
-            isWinner ? setGameStatus('Wygrywa kółko!') : setGameStatus('Wygrywa krzyżyk!');
-            isGameActive = false;
-        }
-        if (isEndOfGame()) {
-            setGameStatus('No to mamy remis!')
-            isGameActive = false;
-        }
+
     }
 }
 
-function fieldCheck(row, col) {
-    if (row > 3 || row < 1) {
-        throw "row index must be greater or equal then 0 and lower than 4";
-    } else if (col > 3 || col < 1) {
-        throw "column index must be greater or equal then 0 and lower than 4";
-    } else {
-        var result = game[row - 1][col - 1];
-        return result;
-    }
-}
-
-function initializeGameBoard() {
-    gameBoard = [];
-    gameBoard.push([undefined, undefined, undefined]);
-    gameBoard.push([undefined, undefined, undefined]);
-    gameBoard.push([undefined, undefined, undefined]);
-
+function clearGameBoard() {
     var gameFields = document.getElementsByTagName('td');
 
     for (var i = 0; i < gameFields.length; i++) {
@@ -157,5 +135,5 @@ function isEndOfGame() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    toggleGameBoard(false); 
+    toggleGameBoard(false);
 });
